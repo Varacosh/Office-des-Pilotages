@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Office des Pilotages — Boralus</title>
+<style>
+  body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f4ead5;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #1a3a5c;
+  }
+
+  .devise {
+    text-align: center;
+    font-style: italic;
+    color: #5c5040;
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .etage {
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .etage:hover {
+    opacity: 0.75;
+  }
+
+  .etage polygon {
+    stroke: #1a3a5c;
+    stroke-width: 1.5;
+  }
+
+  .sommet polygon { fill: #2c5f8d; }
+  .milieu polygon { fill: #3d8470; }
+  .base polygon { fill: #6b6157; }
+
+  .etage text {
+    fill: #f4ead5;
+    font-family: Georgia, serif;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+
+  .titre-etage {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .fleche {
+    stroke: #1a3a5c;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  /* Fond du popup */
+  .fond-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 58, 92, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fond-popup.actif {
+    display: flex;
+  }
+
+  /* Cadre du popup */
+  .cadre-popup {
+    background: #f4ead5;
+    border: 3px double #1a3a5c;
+    padding: 40px;
+    max-width: 560px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .cadre-popup h2 {
+    margin-top: 0;
+    color: #1a3a5c;
+    font-weight: normal;
+    border-bottom: 1px solid #b8a878;
+    padding-bottom: 12px;
+  }
+
+  .fermer {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #1a3a5c;
+    font-family: Georgia, serif;
+  }
+
+  .fermer:hover {
+    color: #993333;
+  }
+
+  .placeholder {
+    color: #8a7a60;
+    font-style: italic;
+    text-align: center;
+    padding: 40px 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>L'Office des Pilotages — Boralus</h1>
+  <p class="devise">La Marée permet, la Couronne confirme</p>
+
+  <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Niveau 1 : Sommet -->
+    <g class="etage sommet" onclick="ouvrirPopup('popup-commodore')">
+      <polygon points="240,40 440,40 460,140 220,140"/>
+      <text class="titre-etage" x="340" y="85">LE COMMODORE-INTENDANT</text>
+      <text class="titre-etage" x="340" y="110">DES BREVETS</text>
+    </g>
+
+    <!-- Flèche 1 -->
+    <line class="fleche" x1="340" y1="160" x2="340" y2="195"/>
+    <polygon class="fleche" points="335,190 340,200 345,190" fill="#1a3a5c"/>
+
+    <!-- Niveau 2 : Milieu -->
+    <g class="etage milieu" onclick="ouvrirPopup('popup-conseil')">
+      <polygon points="180,220 500,220 530,340 150,340"/>
+      <text class="titre-etage" x="340" y="275">LE CONSEIL</text>
+      <text class="titre-etage" x="340" y="300">DES MAÎTRES-PILOTES</text>
+    </g>
+
+    <!-- Flèche 2 -->
+    <line class="fleche" x1="340" y1="360" x2="340" y2="395"/>
+    <polygon class="fleche" points="335,390 340,400 345,390" fill="#1a3a5c"/>
+
+    <!-- Niveau 3 : Base -->
+    <g class="etage base" onclick="ouvrirPopup('popup-bureau')">
+      <polygon points="100,420 580,420 620,540 60,540"/>
+      <text class="titre-etage" x="340" y="475">LE BUREAU</text>
+      <text class="titre-etage" x="340" y="500">DES BREVETS</text>
+    </g>
+
+  </svg>
+
+</div>
+
+<!-- Popup Commodore -->
+<div class="fond-popup" id="popup-commodore" onclick="fermerSiFond(event, 'popup-commodore')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-commodore')">✕</button>
+    <h2>Le Commodore-Intendant des Brevets</h2>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<!-- Popup Conseil -->
+<div class="fond-popup" id="popup-conseil" onclick="fermerSiFond(event, 'popup-conseil')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-conseil')">✕</button>
+    <h2>Le Conseil des Maîtres-Pilotes</h2>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<!-- Popup Bureau -->
+<div class="fond-popup" id="popup-bureau" onclick="fermerSiFond(event, 'popup-bureau')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-bureau')">✕</button>
+    <h2>Le Bureau des Brevets</h2>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<script>
+  function ouvrirPopup(id) {
+    document.getElementById(id).classList.add('actif');
+  }
+
+  function fermerPopup(id) {
+    document.getElementById(id).classList.remove('actif');
+  }
+
+  function fermerSiFond(event, id) {
+    if (event.target.id === id) {
+      fermerPopup(id);
+    }
+  }
+
+  // Fermer avec la touche Échap
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.fond-popup.actif').forEach(function(p) {
+        p.classList.remove('actif');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
