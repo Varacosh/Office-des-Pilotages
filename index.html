@@ -2,36 +2,51 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>L'Office des Pilotages — Boralus</title>
+<title>L'Office des Pilotages - Boralus</title>
 <style>
   body {
     margin: 0;
     padding: 40px 20px;
     font-family: Georgia, 'Times New Roman', serif;
-    background: #f4ead5;
-    color: #1a1a1a;
+    background: #2a3540;
+    background-image:
+      radial-gradient(ellipse at top, #3d4a58 0%, #1f2832 70%, #161e26 100%);
+    color: #d8d4c8;
     min-height: 100vh;
   }
 
   .container {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
   }
 
   h1 {
     text-align: center;
     font-weight: normal;
-    font-size: 28px;
-    margin-bottom: 8px;
-    color: #1a3a5c;
+    font-size: 30px;
+    margin-bottom: 40px;
+    color: #c9b878;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
   }
 
-  .devise {
+  h2.sous-titre {
+    text-align: center;
+    font-weight: normal;
+    font-size: 22px;
+    color: #c9b878;
+    margin-top: 50px;
+    margin-bottom: 8px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  .legende-rose {
     text-align: center;
     font-style: italic;
-    color: #5c5040;
-    margin-bottom: 40px;
+    color: #9aa8b0;
     font-size: 14px;
+    margin-bottom: 24px;
   }
 
   svg {
@@ -40,44 +55,139 @@
     display: block;
   }
 
+  /* Pyramide */
   .etage {
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 0.25s;
   }
 
   .etage:hover {
-    opacity: 0.75;
+    opacity: 0.85;
   }
 
   .etage polygon {
-    stroke: #1a3a5c;
-    stroke-width: 1.5;
+    stroke: #8a7440;
+    stroke-width: 2;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
   }
 
-  .sommet polygon { fill: #2c5f8d; }
-  .milieu polygon { fill: #3d8470; }
-  .base polygon { fill: #6b6157; }
+  /* Bleu marine profond / pierre Kul Tiras */
+  .sommet polygon { fill: #2c4458; }
+  /* Vert-de-gris bronze patiné */
+  .milieu polygon { fill: #3d5e54; }
+  /* Brun cuivre des registres */
+  .base polygon { fill: #4a3a28; }
 
   .etage text {
-    fill: #f4ead5;
+    fill: #e8dcb8;
     font-family: Georgia, serif;
     pointer-events: none;
     text-anchor: middle;
   }
 
   .titre-etage {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
   }
 
   .fleche {
-    stroke: #1a3a5c;
-    stroke-width: 2;
+    stroke: #8a7440;
+    stroke-width: 2.5;
     fill: none;
   }
 
-  /* Fond du popup */
+  /* Rose des vents */
+  .rose-fond {
+    fill: #1f2832;
+    stroke: #8a7440;
+    stroke-width: 2;
+  }
+
+  .rose-ligne {
+    stroke: #5a6470;
+    stroke-width: 1;
+    fill: none;
+    opacity: 0.4;
+  }
+
+  .rose-rayon-long {
+    stroke: #8a7440;
+    stroke-width: 1.5;
+    fill: none;
+    opacity: 0.7;
+  }
+
+  .rose-petale-clair {
+    fill: #c9b878;
+    stroke: #5a4a20;
+    stroke-width: 1;
+  }
+
+  .rose-petale-sombre {
+    fill: #1a2530;
+    stroke: #5a4a20;
+    stroke-width: 1;
+  }
+
+  .point-rose {
+    cursor: pointer;
+    transition: transform 0.2s;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  .point-rose:hover circle {
+    stroke-width: 3;
+    filter: drop-shadow(0 0 8px rgba(201, 184, 120, 0.9));
+  }
+
+  .point-rose circle {
+    stroke: #8a7440;
+    stroke-width: 2;
+    transition: all 0.2s;
+  }
+
+  /* Couleurs des maisons */
+  .portvaillant { fill: #4a8068; }
+  .chantorage { fill: #8fc4cf; }
+  .malvoie { fill: #3a3d42; }
+
+  .label-rose {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+    fill: #c9b878;
+    text-anchor: middle;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+  }
+
+  .legende-couleurs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #d8d4c8;
+    flex-wrap: wrap;
+  }
+
+  .legende-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .puce {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid #8a7440;
+  }
+
+  /* Popups */
   .fond-popup {
     display: none;
     position: fixed;
@@ -85,7 +195,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(26, 58, 92, 0.6);
+    background: rgba(10, 18, 26, 0.85);
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -95,45 +205,64 @@
     display: flex;
   }
 
-  /* Cadre du popup */
   .cadre-popup {
-    background: #f4ead5;
-    border: 3px double #1a3a5c;
-    padding: 40px;
+    background: #2a3540;
+    background-image:
+      linear-gradient(135deg, #324050 0%, #1f2832 100%);
+    border: 2px solid #8a7440;
+    box-shadow:
+      0 0 0 4px #2a3540,
+      0 0 0 6px #8a7440,
+      0 12px 40px rgba(0,0,0,0.7);
+    padding: 40px 44px;
     max-width: 560px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    color: #d8d4c8;
   }
 
   .cadre-popup h2 {
     margin-top: 0;
-    color: #1a3a5c;
+    color: #c9b878;
     font-weight: normal;
-    border-bottom: 1px solid #b8a878;
-    padding-bottom: 12px;
+    font-size: 24px;
+    border-bottom: 1px solid #5a4a20;
+    padding-bottom: 14px;
+    letter-spacing: 0.8px;
+  }
+
+  .cadre-popup .maison-info {
+    display: inline-block;
+    font-size: 12px;
+    font-style: italic;
+    color: #9aa8b0;
+    margin-top: -8px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
   }
 
   .fermer {
     position: absolute;
-    top: 12px;
-    right: 16px;
+    top: 14px;
+    right: 18px;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
-    color: #1a3a5c;
+    color: #c9b878;
     font-family: Georgia, serif;
+    padding: 4px 10px;
+    line-height: 1;
   }
 
   .fermer:hover {
-    color: #993333;
+    color: #d8745a;
   }
 
   .placeholder {
-    color: #8a7a60;
+    color: #7a8088;
     font-style: italic;
     text-align: center;
     padding: 40px 20px;
@@ -144,45 +273,144 @@
 
 <div class="container">
 
-  <h1>L'Office des Pilotages — Boralus</h1>
-  <p class="devise">La Marée permet, la Couronne confirme</p>
+  <h1>L'Office des Pilotages - Boralus</h1>
 
-  <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+  <!-- PYRAMIDE -->
+  <svg viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg">
 
-    <!-- Niveau 1 : Sommet -->
     <g class="etage sommet" onclick="ouvrirPopup('popup-commodore')">
-      <polygon points="240,40 440,40 460,140 220,140"/>
-      <text class="titre-etage" x="340" y="85">LE COMMODORE-INTENDANT</text>
-      <text class="titre-etage" x="340" y="110">DES BREVETS</text>
+      <polygon points="240,40 520,40 540,140 220,140"/>
+      <text class="titre-etage" x="380" y="85">LE COMMODORE-INTENDANT</text>
+      <text class="titre-etage" x="380" y="110">DES BREVETS</text>
     </g>
 
-    <!-- Flèche 1 -->
-    <line class="fleche" x1="340" y1="160" x2="340" y2="195"/>
-    <polygon class="fleche" points="335,190 340,200 345,190" fill="#1a3a5c"/>
+    <line class="fleche" x1="380" y1="160" x2="380" y2="195"/>
+    <polygon class="fleche" points="375,190 380,200 385,190" fill="#8a7440"/>
 
-    <!-- Niveau 2 : Milieu -->
     <g class="etage milieu" onclick="ouvrirPopup('popup-conseil')">
-      <polygon points="180,220 500,220 530,340 150,340"/>
-      <text class="titre-etage" x="340" y="275">LE CONSEIL</text>
-      <text class="titre-etage" x="340" y="300">DES MAÎTRES-PILOTES</text>
+      <polygon points="180,220 580,220 610,340 150,340"/>
+      <text class="titre-etage" x="380" y="275">LE CONSEIL</text>
+      <text class="titre-etage" x="380" y="300">DES MAÎTRES-PILOTES</text>
     </g>
 
-    <!-- Flèche 2 -->
-    <line class="fleche" x1="340" y1="360" x2="340" y2="395"/>
-    <polygon class="fleche" points="335,390 340,400 345,390" fill="#1a3a5c"/>
+    <line class="fleche" x1="380" y1="360" x2="380" y2="395"/>
+    <polygon class="fleche" points="375,390 380,400 385,390" fill="#8a7440"/>
 
-    <!-- Niveau 3 : Base -->
     <g class="etage base" onclick="ouvrirPopup('popup-bureau')">
-      <polygon points="100,420 580,420 620,540 60,540"/>
-      <text class="titre-etage" x="340" y="475">LE BUREAU</text>
-      <text class="titre-etage" x="340" y="500">DES BREVETS</text>
+      <polygon points="100,420 660,420 700,540 60,540"/>
+      <text class="titre-etage" x="380" y="475">LE BUREAU</text>
+      <text class="titre-etage" x="380" y="500">DES BREVETS</text>
     </g>
 
   </svg>
 
+  <!-- ROSE DES VENTS -->
+  <h2 class="sous-titre">La Rose des Vents du Conseil</h2>
+  <p class="legende-rose">Cliquez sur un point cardinal pour découvrir le Doyen qui y siège</p>
+
+  <div style="max-width: 420px; margin: 0 auto;">
+  <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Cercles concentriques -->
+    <circle class="rose-fond" cx="210" cy="210" r="200"/>
+    <circle class="rose-ligne" cx="210" cy="210" r="170"/>
+    <circle class="rose-ligne" cx="210" cy="210" r="135"/>
+    <circle class="rose-ligne" cx="210" cy="210" r="50"/>
+
+    <!-- Rayons principaux -->
+    <line class="rose-rayon-long" x1="210" y1="30" x2="210" y2="390"/>
+    <line class="rose-rayon-long" x1="30" y1="210" x2="390" y2="210"/>
+    <line class="rose-rayon-long" x1="83" y1="83" x2="337" y2="337"/>
+    <line class="rose-rayon-long" x1="337" y1="83" x2="83" y2="337"/>
+
+    <!-- Pétales cardinaux clairs (dorés) -->
+    <polygon class="rose-petale-clair" points="210,210 202,150 210,60 218,150"/>
+    <polygon class="rose-petale-clair" points="210,210 270,202 360,210 270,218"/>
+    <polygon class="rose-petale-clair" points="210,210 218,270 210,360 202,270"/>
+    <polygon class="rose-petale-clair" points="210,210 150,218 60,210 150,202"/>
+
+    <!-- Pétales collatéraux sombres -->
+    <polygon class="rose-petale-sombre" points="210,210 251,169 295,125 254,166"/>
+    <polygon class="rose-petale-sombre" points="210,210 251,251 295,295 254,254"/>
+    <polygon class="rose-petale-sombre" points="210,210 169,251 125,295 166,254"/>
+    <polygon class="rose-petale-sombre" points="210,210 169,169 125,125 166,166"/>
+
+    <!-- Centre -->
+    <circle cx="210" cy="210" r="12" fill="#8a7440" stroke="#1a2530" stroke-width="2"/>
+    <circle cx="210" cy="210" r="5" fill="#1a2530"/>
+
+    <!-- Labels des directions -->
+    <text class="label-rose" x="210" y="22">N</text>
+    <text class="label-rose" x="210" y="408">S</text>
+    <text class="label-rose" x="405" y="215">E</text>
+    <text class="label-rose" x="15" y="215">O</text>
+    <text class="label-rose" x="350" y="78">NE</text>
+    <text class="label-rose" x="350" y="352">SE</text>
+    <text class="label-rose" x="70" y="352">SO</text>
+    <text class="label-rose" x="70" y="78">NO</text>
+
+    <!-- POINTS CLIQUABLES -->
+    <!-- Nord : Chantorage -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-nord')">
+      <circle class="chantorage" cx="210" cy="48" r="13"/>
+    </g>
+
+    <!-- Nord-Est : Portvaillant -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-ne')">
+      <circle class="portvaillant" cx="325" cy="95" r="13"/>
+    </g>
+
+    <!-- Est : Portvaillant -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-est')">
+      <circle class="portvaillant" cx="372" cy="210" r="13"/>
+    </g>
+
+    <!-- Sud-Est : Portvaillant -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-se')">
+      <circle class="portvaillant" cx="325" cy="325" r="13"/>
+    </g>
+
+    <!-- Sud : Portvaillant -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-sud')">
+      <circle class="portvaillant" cx="210" cy="372" r="13"/>
+    </g>
+
+    <!-- Sud-Ouest : Malvoie -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-so')">
+      <circle class="malvoie" cx="95" cy="325" r="13"/>
+    </g>
+
+    <!-- Ouest : Malvoie -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-ouest')">
+      <circle class="malvoie" cx="48" cy="210" r="13"/>
+    </g>
+
+    <!-- Nord-Ouest : Chantorage -->
+    <g class="point-rose" onclick="ouvrirPopup('popup-no')">
+      <circle class="chantorage" cx="95" cy="95" r="13"/>
+    </g>
+
+  </svg>
+  </div>
+
+  <div class="legende-couleurs">
+    <div class="legende-item">
+      <span class="puce" style="background:#4a8068"></span>
+      <span>Maison Portvaillant (4 sièges)</span>
+    </div>
+    <div class="legende-item">
+      <span class="puce" style="background:#3a3d42"></span>
+      <span>Maison Malvoie (2 sièges)</span>
+    </div>
+    <div class="legende-item">
+      <span class="puce" style="background:#8fc4cf"></span>
+      <span>Maison Chantorage (2 sièges)</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- Popup Commodore -->
+<!-- POPUPS PYRAMIDE -->
 <div class="fond-popup" id="popup-commodore" onclick="fermerSiFond(event, 'popup-commodore')">
   <div class="cadre-popup">
     <button class="fermer" onclick="fermerPopup('popup-commodore')">✕</button>
@@ -191,7 +419,6 @@
   </div>
 </div>
 
-<!-- Popup Conseil -->
 <div class="fond-popup" id="popup-conseil" onclick="fermerSiFond(event, 'popup-conseil')">
   <div class="cadre-popup">
     <button class="fermer" onclick="fermerPopup('popup-conseil')">✕</button>
@@ -200,11 +427,83 @@
   </div>
 </div>
 
-<!-- Popup Bureau -->
 <div class="fond-popup" id="popup-bureau" onclick="fermerSiFond(event, 'popup-bureau')">
   <div class="cadre-popup">
     <button class="fermer" onclick="fermerPopup('popup-bureau')">✕</button>
     <h2>Le Bureau des Brevets</h2>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<!-- POPUPS ROSE DES VENTS -->
+<div class="fond-popup" id="popup-nord" onclick="fermerSiFond(event, 'popup-nord')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-nord')">✕</button>
+    <h2>Doyen du Nord</h2>
+    <span class="maison-info">Maison Chantorage</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-ne" onclick="fermerSiFond(event, 'popup-ne')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-ne')">✕</button>
+    <h2>Doyen du Nord-Est</h2>
+    <span class="maison-info">Maison Portvaillant</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-est" onclick="fermerSiFond(event, 'popup-est')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-est')">✕</button>
+    <h2>Doyen de l'Est</h2>
+    <span class="maison-info">Maison Portvaillant</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-se" onclick="fermerSiFond(event, 'popup-se')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-se')">✕</button>
+    <h2>Doyen du Sud-Est</h2>
+    <span class="maison-info">Maison Portvaillant</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-sud" onclick="fermerSiFond(event, 'popup-sud')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-sud')">✕</button>
+    <h2>Doyen du Sud</h2>
+    <span class="maison-info">Maison Portvaillant</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-so" onclick="fermerSiFond(event, 'popup-so')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-so')">✕</button>
+    <h2>Doyen du Sud-Ouest</h2>
+    <span class="maison-info">Maison Malvoie</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-ouest" onclick="fermerSiFond(event, 'popup-ouest')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-ouest')">✕</button>
+    <h2>Doyen de l'Ouest</h2>
+    <span class="maison-info">Maison Malvoie</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-no" onclick="fermerSiFond(event, 'popup-no')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-no')">✕</button>
+    <h2>Doyen du Nord-Ouest</h2>
+    <span class="maison-info">Maison Chantorage</span>
     <p class="placeholder">[ texte à rédiger ]</p>
   </div>
 </div>
@@ -224,7 +523,6 @@
     }
   }
 
-  // Fermer avec la touche Échap
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       document.querySelectorAll('.fond-popup.actif').forEach(function(p) {
