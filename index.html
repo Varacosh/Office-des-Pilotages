@@ -267,6 +267,61 @@
     text-align: center;
     padding: 40px 20px;
   }
+
+  .cadre-popup h3 {
+    color: #c9b878;
+    font-weight: normal;
+    font-size: 17px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    letter-spacing: 0.8px;
+    border-left: 3px solid #8a7440;
+    padding-left: 12px;
+  }
+
+  .cadre-popup h3:first-of-type {
+    margin-top: 8px;
+  }
+
+  .cadre-popup p {
+    line-height: 1.65;
+    text-align: justify;
+    margin: 0 0 12px 0;
+    color: #d8d4c8;
+  }
+
+  .cadre-popup em {
+    color: #c9b878;
+    font-style: italic;
+  }
+
+  .cadre-popup strong {
+    color: #e8dcb8;
+    font-weight: bold;
+  }
+
+  .cadre-popup ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0 16px 0;
+  }
+
+  .cadre-popup ul li {
+    line-height: 1.6;
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 8px;
+    color: #d8d4c8;
+  }
+
+  .cadre-popup ul li::before {
+    content: "❖";
+    position: absolute;
+    left: 0;
+    color: #8a7440;
+    font-size: 12px;
+    top: 2px;
+  }
 </style>
 </head>
 <body>
@@ -423,7 +478,41 @@
   <div class="cadre-popup">
     <button class="fermer" onclick="fermerPopup('popup-conseil')">✕</button>
     <h2>Le Conseil de la Rose des Vents</h2>
-    <p class="placeholder">[ texte à rédiger ]</p>
+
+    <h3>Composition et symbolique</h3>
+    <p>Surnommé le <em>Banc des Barbes-Grises</em>, le Conseil de la Rose des Vents réunit huit doyens, chacun affecté à l'une des aires de l'archipel de Kul Tiras : les quatre points cardinaux et les quatre directions collatérales. Chaque siège porte le nom de son orientation et incarne, par convention, les eaux et les vents de la zone correspondante. L'usage veut qu'un doyen <em>tienne son aire</em> plutôt qu'il n'occupe un siège, nuance révélatrice (quoique désuète) de la conception territoriale qui irrigue toute l'institution.</p>
+
+    <h3>Répartition entre les maisons</h3>
+    <p>La <strong>Charte des Marées</strong>, texte fondateur remontant à la consolidation de l'Amirauté, figeait naguère la ventilation des sièges entre quatre maisons. Depuis la Quatrième Guerre, la maison Portvaillant en détient quatre, tandis que la maison Chantorage et la maison Malvoie s'en partagent deux chacune.</p>
+
+    <h3>Mandat, vacance et cooptation</h3>
+    <p>Le mandat dure <em>jusqu'à ce que la mer rappelle son doyen</em>, formule pudique qui recouvre indifféremment le décès, la sénilité constatée ou la démission honorable. Une révocation pour faute grave demeure possible, à condition de réunir les trois quarts des voix.</p>
+    <p>La succession obéit à une procédure de <strong>cooptation</strong> : la maison concernée ne désigne pas directement le remplaçant, mais soumet des candidats au vote des huit doyens, lesquels statuent à la majorité des deux tiers. Le postulant doit traditionnellement justifier de trente années de service actif sans révocation et avoir fait naviguer plusieurs navires ; règle que seule <em>l'eaugure sœur Murène Gréevent</em> contourne aujourd'hui. Faute de candidat acceptable, le siège peut rester vacant plusieurs semaines, et le Conseil délibère alors en formation réduite, ce qui suffit parfois à paralyser certains examens.</p>
+
+    <h3>Le Quartier-Maître</h3>
+    <p>Le doyen siégeant depuis le plus longtemps (par ancienneté de mandat, non d'âge) porte le titre de <strong>Quartier-Maître</strong>. Il préside les séances, fixe l'ordre du jour, départage en cas d'égalité parfaite et représente le Conseil devant le Commodore-Intendant, parfois devant l'Amiral Suprême lui-même. Sa voix ne pèse pas davantage que celle de ses pairs lors des votes ordinaires, sa primauté tenant à la présidence, non au suffrage.</p>
+
+    <h3>Règles de vote et seuils</h3>
+    <p>La majorité simple s'établit à <strong>cinq voix sur huit</strong>, calibrage volontairement conçu pour imposer le compromis. Les quatre Portvaillant ne peuvent rien emporter à eux seuls : il leur faut rallier au moins un Chantorage ou un Malvoie. Symétriquement, une coalition Chantorage-Malvoie plafonne à quatre voix et reste impuissante. Toute décision d'importance traverse donc nécessairement deux maisons sur trois.</p>
+    <p>Certaines procédures relèvent de seuils renforcés :</p>
+    <ul>
+      <li>La <strong>révocation d'un brevet en exercice</strong> exige six voix sur huit.</li>
+      <li>La <strong>démission forcée d'un doyen</strong> requiert les trois quarts des voix, l'intéressé exclu du scrutin.</li>
+      <li>Une règle coutumière jamais codifiée, mais observée sans faille, impose pour certains avis le vote favorable de l'<strong>ensemble des eaugures siégeant au Conseil</strong> (souvent les doyens Chantorage).</li>
+    </ul>
+
+    <h3>Nature des avis</h3>
+    <p>Au terme d'une délibération, le Conseil émet l'un des deux avis prévus : <strong>favorable</strong>, éventuellement assorti de réserves énumérées et opposables au candidat ; ou <strong>défavorable motivé</strong>, la motivation s'inscrivant au registre pour autoriser d'éventuels recours ultérieurs.</p>
+
+    <h3>Compétences et limites du Conseil</h3>
+    <p>Le Banc détient en propre l'organisation des examens pratiques et théoriques, ainsi que l'émission de l'<strong>avis technique</strong> sans lequel aucun brevet ne saurait, en théorie, voir le jour. Il peut également proposer la révocation d'un brevet pour incompétence avérée.</p>
+    <p>Mais aucun acte exécutoire ne sort de ses mains : ni papier, ni sceau opposable, ni signature contraignante. Son avis demeure strictement <em>consultatif</em>. Le Commodore-Intendant conserve la faculté de l'écraser dans les deux sens. Soit en accordant un brevet contre un avis défavorable, manœuvre rarissime et jugée scandaleuse, soit en le refusant malgré une recommandation favorable, pratique nettement plus fréquente, motivée en règle générale par la politique ou la sécurité.</p>
+    <p>Cette dissymétrie définit ainsi la culture entière du Conseil : autorité technique souveraine d'un côté, impuissance exécutoire de l'autre. Les doyens disposent de <em>l'autorité du savoir</em>, jamais de celle de la signature.</p>
+
+    <h3>Travers et pathologies</h3>
+    <p>Le conservatisme y confine à la pathologie, particulièrement chez les doyens drusvarti, qui dédaignent les cartographies récentes, traitent toute innovation comme une provocation et entretiennent des inimitiés transmises depuis des décennies, parfois des siècles.</p>
+    <p>En outre, le <strong>népotisme</strong> s'enracine durablement : les fils, neveux et filleuls des doyens franchissent les examens pratiques avec une aisance statistiquement remarquable, et la cooptation favorise structurellement les candidats issus de lignées déjà représentées.</p>
+    <p>Le huis clos des délibérations entretient enfin des rancœurs irréductibles. Un doyen Chantorage qui refuse systématiquement de bénir les candidats parrainés par tel doyen Portvaillant peut geler des dossiers entiers pendant des années sans jamais devoir s'en expliquer publiquement. Enfin, huit vieillards à mandat viager forment ainsi un corps qu'aucune autorité extérieure ne saurait renouveler rapidement, ressort qui assure simultanément la stabilité institutionnelle de l'instance et sa paralysie devant toute tentative de réforme.</p>
   </div>
 </div>
 
