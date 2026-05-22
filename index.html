@@ -187,6 +187,42 @@
     border: 1.5px solid #8a7440;
   }
 
+  /* Boutons d'annexe */
+  .boutons-annexes {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+  }
+
+  .bouton-annexe {
+    background: #1f2832;
+    background-image: linear-gradient(135deg, #2c4458 0%, #1f2832 100%);
+    color: #c9b878;
+    border: 2px solid #8a7440;
+    padding: 16px 32px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow:
+      0 0 0 3px #1f2832,
+      0 0 0 4px #8a7440,
+      0 6px 16px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+  }
+
+  .bouton-annexe:hover {
+    color: #e8dcb8;
+    background-image: linear-gradient(135deg, #3a5673 0%, #2c4458 100%);
+    box-shadow:
+      0 0 0 3px #1f2832,
+      0 0 0 4px #c9b878,
+      0 8px 22px rgba(201, 184, 120, 0.25);
+  }
+
   /* Popups */
   .fond-popup {
     display: none;
@@ -485,6 +521,11 @@
     </div>
   </div>
 
+  <div class="boutons-annexes">
+    <button class="bouton-annexe" onclick="ouvrirPopup('popup-processus')">Processus d'obtention</button>
+    <button class="bouton-annexe" onclick="ouvrirPopup('popup-cas-particuliers')">Cas particuliers</button>
+  </div>
+
 </div>
 
 <!-- POPUPS PYRAMIDE -->
@@ -682,6 +723,63 @@
     <button class="fermer" onclick="fermerPopup('popup-no')">✕</button>
     <h2>Mereval Pâlerive</h2>
     <span class="maison-info">Doyen du Nord-Ouest · Maison Chantorage</span>
+    <p class="placeholder">[ texte à rédiger ]</p>
+  </div>
+</div>
+
+<!-- POPUPS ANNEXES -->
+<div class="fond-popup" id="popup-processus" onclick="fermerSiFond(event, 'popup-processus')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-processus')">✕</button>
+    <h2>Processus d'obtention</h2>
+
+    <h3>Étape 1 · Dépôt du dossier</h3>
+    <p>Le candidat se présente à l'antenne portuaire la plus proche de son lieu de résidence et y constitue son dossier auprès du <strong>Bureau des Brevets</strong>. Cinq pièces se trouvent exigées :</p>
+    <ul>
+      <li>un <strong>livret de mer</strong> attestant quatre années au moins de navigation effective</li>
+      <li>un <strong>certificat de moralité</strong> délivré par l'<strong>Ordre des Eaugures</strong></li>
+      <li>un <strong>certificat médical</strong> portant sur la vue, l'audition et l'équilibre</li>
+      <li>une <strong>attestation de parrainage</strong> signée par deux pilotes brevetés en exercice, ou à défaut par un Doyen du Conseil</li>
+      <li>enfin la <strong>quittance du droit de dépôt</strong></li>
+    </ul>
+    <p>L'instruction administrative court ensuite sur <em>six à huit semaines</em>.</p>
+
+    <h3>Étape 2 · Examen théorique</h3>
+    <p>Le Bureau convoque le candidat aux épreuves écrites environ deux mois après le dépôt, sous la supervision d'un Doyen. Les sujets couvrent les <em>marées</em>, la <em>cartographie</em>, le <em>droit maritime</em> ou encore la <em>signalétique des phares</em>. Le taux d'échec à la première session avoisine quarante pour cent, situation qui alimente un <em>petit commerce florissant</em> autour des frais de réinscription.</p>
+
+    <h3>Étape 3 · Examen des fonds</h3>
+    <p>Le candidat comparaît devant trois Doyens du <strong>Comité des Sondages</strong> pour une récitation orale, conduite sans aucun support. Il doit énumérer de mémoire les bancs, hauts-fonds, courants saisonniers et amers visibles de Kul Tiras. Aucun frais direct ne grève cette épreuve.</p>
+
+    <h3>Étape 4 · Examen pratique</h3>
+    <p>Plusieurs sorties en mer suivent, à bord d'un <strong>navire-école</strong> de l'Amirauté, deux Doyens observant la manœuvre. Le candidat pilote effectivement le bâtiment dans des conditions calibrées : entrée et sortie de port, manœuvre sur un fond connu, puis manœuvre sur un fond inconnu. Les examinateurs <em>faussent parfois la profondeur affichée sur la carte</em> de cette dernière épreuve, afin de jauger la qualité de lecture directe du candidat. La convocation parvient un à trois mois après l'examen des fonds.</p>
+
+    <h3>Étape 5 · Avis technique</h3>
+    <p>Le Conseil délibère à <em>huis clos</em>. Le vote requiert la majorité simple des examinateurs présents. Sous deux semaines, l'avis parvient au Bureau, sous l'une des deux mentions admises :</p>
+    <ul>
+      <li><strong>favorable</strong>, assorti le cas échéant de réserves énumérées</li>
+      <li>ou <strong>défavorable</strong>, motivé par des réserves obligatoires</li>
+    </ul>
+
+    <h3>Étape 6 · Préparation du brevet</h3>
+    <p>Un avis favorable enclenche le travail du Bureau, qui calligraphie le parchemin, contrôle une dernière fois les pièces du dossier et appose les <em>sceaux préparatoires</em>.</p>
+
+    <h3>Étape 7 · Cérémonie</h3>
+    <p>Le candidat se présente au jour fixé dans le <strong>Hall de Daelin</strong>. Devant le <strong>Commodore-Intendant</strong>, il prête serment de fidélité à l'<strong>Amirauté</strong>, à la <em>Mère des Marées</em>, aux navires confiés à sa conduite, ainsi qu'à la sécurité des passagers et des marchandises transportées. Le brevet signé et scellé lui revient alors, sous la forme d'un parchemin plié dans un <em>étui de cuir bouilli</em> frappé aux armes de l'Amirauté. Le papier subit au préalable une <em>immersion dans l'eau de mer</em>, rite traditionnel censé en garantir la reconnaissance par l'océan.</p>
+
+    <h3>Voies de recours</h3>
+    <p>Trois mois s'ouvrent au candidat éconduit pour réagir à un avis défavorable. Il peut :</p>
+    <ul>
+      <li>solliciter, contre paiement, une <strong>session de rattrapage</strong> devant le même Comité</li>
+      <li>saisir le Commodore-Intendant en <em>délivrance d'autorité</em>, démarche rarissime qui requiert des motifs sérieux et n'aboutit qu'exceptionnellement</li>
+      <li>ou patienter deux années et reprendre l'intégralité de la procédure</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fond-popup" id="popup-cas-particuliers" onclick="fermerSiFond(event, 'popup-cas-particuliers')">
+  <div class="cadre-popup">
+    <button class="fermer" onclick="fermerPopup('popup-cas-particuliers')">✕</button>
+    <h2>Cas particuliers</h2>
     <p class="placeholder">[ texte à rédiger ]</p>
   </div>
 </div>
